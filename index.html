@@ -3,427 +3,888 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>株式会社 ÉLAN Groupe | 営業支援</title>
-  <meta name="description" content="株式会社 ÉLAN Groupe は訪問販売・催事を軸とした営業支援会社です。">
+  <title>株式会社 ÉLAN Groupe | 日本の若者の常識を変える。</title>
+  <meta name="description" content="株式会社 ÉLAN Groupe — 通信インフラ・訪問販売・催事営業・採用支援。本気で成長したい若者が集まる組織。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
-  html { scroll-behavior: smooth; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0d1f3c;
+  --navy-deep: #07111f;
+  --navy-mid: #152b52;
+  --navy-light: #1e3a6e;
+  --blue: #1a56db;
+  --blue-bright: #3b82f6;
+  --white: #f7f8fc;
+  --white-dim: rgba(247,248,252,0.65);
+  --white-faint: rgba(247,248,252,0.2);
+  --white-ghost: rgba(247,248,252,0.07);
+  --gold: #c9a96e;
+  --border: rgba(247,248,252,0.1);
+  --border-blue: rgba(59,130,246,0.3);
+}
+html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--navy-deep);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
 
-  :root {
-    --gold: #c9a96e;
-    --gold-light: rgba(201,169,110,0.15);
-    --bg: #0a0a0a;
-    --bg2: #0f0e0b;
-    --bg3: #111009;
-    --text: #f0ede6;
-    --text-dim: rgba(240,237,230,0.5);
-    --text-faint: rgba(240,237,230,0.2);
-    --border: rgba(240,237,230,0.08);
-    --border-gold: rgba(201,169,110,0.25);
-  }
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
 
-  body { background: var(--bg); color: var(--text); font-family: 'Jost', sans-serif; overflow-x: hidden; }
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 3rem;
+  background: rgba(7,17,31,0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 18px; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--white);
+}
+.nav-logo .accent { color: var(--blue-bright); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 11px; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--white-dim);
+  transition: color 0.25s;
+}
+.nav-links a:hover { color: var(--blue-bright); }
+.nav-cta {
+  padding: 8px 20px;
+  background: var(--blue);
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #fff; transition: background 0.25s; border: none; cursor: pointer;
+}
+.nav-cta:hover { background: var(--blue-bright); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white-dim); }
+.mobile-menu { display: none; flex-direction: column; background: rgba(7,17,31,0.98); border-bottom: 0.5px solid var(--border); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { padding: 1rem 1.5rem; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white-dim); border-bottom: 0.5px solid var(--border); }
 
-  /* NAV */
-  .nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.6rem 3rem;
-    border-bottom: 0.5px solid var(--border);
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(12px);
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-weight: 300; letter-spacing: 0.08em; color: var(--text);
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
-  .nav-links a {
-    font-size: 11px; font-weight: 300; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--text-dim); text-decoration: none;
-    transition: color 0.3s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-  .nav-hamburger span { display: block; width: 22px; height: 1px; background: var(--text-dim); transition: 0.3s; }
-  .nav-mobile { display: none; }
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 96vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem 3rem 5rem;
+  overflow: hidden;
+}
+.hero-grid-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(59,130,246,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-glow {
+  position: absolute; top: -20%; right: -10%; z-index: 0;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,86,219,0.18) 0%, transparent 70%);
+}
+.hero-glow2 {
+  position: absolute; bottom: -10%; left: 5%; z-index: 0;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+}
+.hero-content { position: relative; z-index: 2; max-width: 800px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 14px; margin-bottom: 2rem;
+  border: 0.5px solid var(--border-blue);
+  background: rgba(59,130,246,0.08);
+  font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--blue-bright);
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue-bright); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+.hero-mission {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 9vw, 110px);
+  line-height: 0.95; letter-spacing: 0.02em;
+  color: var(--white); margin-bottom: 2rem;
+}
+.hero-mission .line2 {
+  display: block;
+  background: linear-gradient(135deg, var(--blue-bright), #60a5fa);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(14px, 2vw, 18px); font-weight: 400;
+  color: var(--white-dim); margin-bottom: 3rem; line-height: 1.8;
+  letter-spacing: 0.1em;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 5rem; }
+.btn-primary {
+  padding: 14px 32px;
+  background: var(--blue); color: #fff;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  border: none; cursor: pointer; transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { background: var(--blue-bright); transform: translateY(-1px); }
+.btn-outline {
+  padding: 14px 32px;
+  background: transparent; color: var(--white);
+  font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  border: 0.5px solid var(--white-faint); cursor: pointer; transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline:hover { border-color: var(--blue-bright); color: var(--blue-bright); }
+.hero-stats {
+  display: flex; gap: 0; border-top: 0.5px solid var(--border);
+  border-left: 0.5px solid var(--border);
+  width: fit-content;
+}
+.hero-stat {
+  padding: 1.5rem 2.5rem;
+  border-right: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+}
+.hero-stat-n {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px; color: var(--white); line-height: 1;
+}
+.hero-stat-n span { color: var(--blue-bright); font-size: 28px; }
+.hero-stat-l { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white-dim); margin-top: 4px; }
+.hero-scroll {
+  position: absolute; bottom: 2.5rem; right: 3rem; z-index: 2;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-faint);
+}
+.hero-scroll::after { content: ''; display: block; width: 40px; height: 0.5px; background: var(--white-faint); }
 
-  /* HERO */
-  .hero {
-    min-height: 88vh; display: flex; align-items: center;
-    padding: 5rem 3rem 4rem; position: relative; overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; top: 0; right: 0; width: 55%; height: 100%;
-    background: linear-gradient(135deg, #1a1208 0%, #0d0d0d 60%);
-    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); z-index: 0;
-  }
-  .hero-line {
-    position: absolute; top: 30%; right: 18%; width: 1px; height: 180px;
-    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-    opacity: 0.4;
-  }
-  .hero-content { position: relative; z-index: 2; max-width: 540px; }
-  .hero-eyebrow {
-    font-size: 10px; font-weight: 300; letter-spacing: 0.32em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 2rem;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .hero-eyebrow::before { content: ''; display: inline-block; width: 32px; height: 0.5px; background: var(--gold); }
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(44px, 6.5vw, 74px); font-weight: 300;
-    line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 2rem;
-  }
-  .hero-title em { font-style: italic; color: var(--gold); }
-  .hero-desc {
-    font-size: 14px; font-weight: 300; line-height: 1.9;
-    color: var(--text-dim); margin-bottom: 3rem; max-width: 380px;
-  }
-  .btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 13px 30px; border: 0.5px solid var(--gold);
-    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gold); background: transparent; cursor: pointer;
-    transition: all 0.3s; text-decoration: none;
-  }
-  .btn:hover { background: var(--gold); color: var(--bg); }
-  .hero-stats {
-    display: flex; gap: 3rem; margin-top: 4rem;
-    padding-top: 2rem; border-top: 0.5px solid var(--border);
-  }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px; font-weight: 300; color: var(--gold); line-height: 1;
-  }
-  .stat-label {
-    font-size: 10px; font-weight: 300; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--text-faint); margin-top: 6px;
-  }
+/* ── SECTION BASE ── */
+.section { padding: 6rem 3rem; position: relative; z-index: 1; }
+.section-eyebrow {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--blue-bright); margin-bottom: 0.8rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-eyebrow::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--blue-bright); }
+.section-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(28px, 4vw, 44px); font-weight: 600; color: var(--white);
+  margin-bottom: 3rem; line-height: 1.3;
+}
+.section-title .en {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7em; letter-spacing: 0.08em; color: var(--white-dim);
+  display: block; margin-bottom: 0.3rem;
+}
 
-  /* SECTION BASE */
-  .section { padding: 5rem 3rem; }
-  .section-label {
-    font-size: 10px; font-weight: 300; letter-spacing: 0.3em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px; font-weight: 300; color: var(--text);
-    margin-bottom: 3rem; letter-spacing: 0.02em;
-  }
+/* ── MVV ── */
+.mvv { background: var(--navy); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
+.mvv-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+.mvv-mission-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--blue-bright); margin-bottom: 1.5rem;
+}
+.mvv-mission-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 7vw, 80px); line-height: 1.05;
+  background: linear-gradient(135deg, var(--white) 30%, var(--blue-bright));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 4rem;
+}
+.mvv-divider { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--border-blue), transparent); margin: 0 auto 4rem; }
+.mvv-values-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--white-dim); margin-bottom: 2rem;
+}
+.mvv-values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
+.mvv-value-card {
+  background: var(--navy-deep); padding: 2rem 1.5rem;
+  text-align: left; position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.mvv-value-card:hover { background: var(--navy-mid); }
+.mvv-value-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--blue), transparent);
+}
+.mvv-value-num { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: var(--border-blue); line-height: 1; margin-bottom: 1rem; }
+.mvv-value-text {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 15px; font-weight: 500; color: var(--white); line-height: 1.6;
+}
+.mvv-value-sub { font-size: 11px; color: var(--white-dim); margin-top: 6px; line-height: 1.6; }
 
-  /* SERVICES */
-  .services { background: var(--bg2); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
-  .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); }
-  .service-card { background: var(--bg2); padding: 2.5rem 2rem; transition: background 0.3s; }
-  .service-card:hover { background: #161410; }
-  .service-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--gold-light); line-height: 1; margin-bottom: 1.5rem; }
-  .service-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--text); margin-bottom: 1rem; }
-  .service-desc { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--text-dim); }
-  .service-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    margin-top: 1.5rem; padding: 5px 14px;
-    border: 0.5px solid var(--border-gold);
-    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,169,110,0.7);
-  }
-  .service-badge.coming { border-color: var(--border); color: var(--text-faint); }
+/* ── GREETING ── */
+.greeting { background: var(--navy-deep); }
+.greeting-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; }
+.greeting-photo {
+  aspect-ratio: 3/4; background: var(--navy);
+  border: 0.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.greeting-photo-placeholder {
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  color: var(--white-faint);
+}
+.greeting-photo-placeholder .initial {
+  font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: var(--border-blue);
+  line-height: 1;
+}
+.greeting-photo-note { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; }
+.greeting-photo-border {
+  position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px;
+  border: 0.5px solid var(--border-blue); z-index: -1;
+}
+.greeting-role { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 1rem; }
+.greeting-name { font-family: 'Shippori Mincho', serif; font-size: 36px; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+.greeting-name-en { font-size: 13px; letter-spacing: 0.1em; color: var(--white-dim); margin-bottom: 2rem; }
+.greeting-text { font-size: 14px; font-weight: 300; line-height: 2.1; color: var(--white-dim); margin-bottom: 2rem; }
+.greeting-sig { font-family: 'Shippori Mincho', serif; font-size: 20px; font-weight: 500; color: var(--white); }
 
-  /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .about-left { border-left: 0.5px solid var(--border-gold); padding-left: 2.5rem; }
-  .info-row { display: flex; justify-content: space-between; align-items: baseline; padding: 1rem 0; border-bottom: 0.5px solid var(--border); }
-  .info-row:last-child { border-bottom: none; }
-  .info-key { font-size: 11px; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); }
-  .info-val { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; color: var(--text); }
-  .info-val.pending { font-size: 14px; color: rgba(240,237,230,0.3); font-family: 'Jost', sans-serif; }
-  .profile-card {
-    background: rgba(201,169,110,0.04); border: 0.5px solid var(--border-gold);
-    padding: 2rem; display: flex; align-items: center; gap: 1.5rem;
-  }
-  .avatar {
-    width: 64px; height: 64px; border-radius: 50%;
-    background: linear-gradient(135deg, #2a2010, #1a1208);
-    border: 0.5px solid rgba(201,169,110,0.4);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--gold);
-    flex-shrink: 0;
-  }
-  .profile-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--text); margin-bottom: 4px; }
-  .profile-role { font-size: 11px; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,169,110,0.7); }
-  .about-note { font-size: 13px; font-weight: 300; line-height: 2; color: var(--text-dim); margin-top: 1.5rem; }
+/* ── SERVICES ── */
+.services { background: var(--navy); border-top: 0.5px solid var(--border); }
+.services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); }
+.service-card {
+  background: var(--navy-deep); padding: 2.5rem;
+  transition: background 0.3s; position: relative; overflow: hidden;
+}
+.service-card:hover { background: var(--navy-mid); }
+.service-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--blue), transparent);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+}
+.service-card:hover::after { transform: scaleX(1); }
+.service-num { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: var(--border-blue); line-height: 1; margin-bottom: 1.2rem; }
+.service-name { font-family: 'Shippori Mincho', serif; font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 0.8rem; }
+.service-name-en { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 1rem; }
+.service-desc { font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--white-dim); }
+.service-badge {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 1.5rem;
+  padding: 4px 12px; background: rgba(59,130,246,0.1);
+  border: 0.5px solid var(--border-blue);
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-bright);
+}
+.service-badge.soon { background: transparent; border-color: var(--border); color: var(--white-dim); }
 
-  /* PHILOSOPHY */
-  .philosophy { background: #080706; border-top: 0.5px solid var(--border); }
-  .phi-inner { max-width: 620px; margin: 0 auto; text-align: center; }
-  .phi-quote {
-    font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300;
-    line-height: 1.6; color: rgba(240,237,230,0.15); font-style: italic;
-    padding: 2.5rem 0; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
-    margin-bottom: 1.5rem;
-  }
-  .phi-note { font-size: 12px; font-weight: 300; letter-spacing: 0.1em; color: var(--text-faint); }
+/* ── INTERN ── */
+.intern { background: var(--navy-deep); }
+.intern-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+.intern-points { display: flex; flex-direction: column; gap: 1.5rem; }
+.intern-point {
+  display: flex; gap: 1.5rem; align-items: flex-start;
+  padding: 1.5rem; border: 0.5px solid var(--border);
+  background: var(--white-ghost); transition: border-color 0.3s;
+}
+.intern-point:hover { border-color: var(--border-blue); }
+.intern-point-num {
+  font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--blue-bright);
+  line-height: 1; min-width: 44px;
+}
+.intern-point-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
+.intern-point-desc { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--white-dim); }
+.intern-aside {
+  background: var(--navy); border: 0.5px solid var(--border);
+  padding: 2.5rem; position: sticky; top: 100px;
+}
+.intern-aside-title { font-family: 'Shippori Mincho', serif; font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 1.5rem; }
+.intern-voice { padding: 1.5rem 0; border-bottom: 0.5px solid var(--border); }
+.intern-voice:last-child { border-bottom: none; }
+.intern-voice-text { font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--white-dim); margin-bottom: 0.8rem; font-style: italic; }
+.intern-voice-name { font-size: 11px; letter-spacing: 0.1em; color: var(--blue-bright); }
 
-  /* RECRUIT */
-  .recruit { background: var(--bg2); border-top: 0.5px solid var(--border); }
-  .recruit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); }
-  .recruit-card { background: var(--bg2); padding: 2.5rem 2rem; transition: background 0.3s; }
-  .recruit-card:hover { background: #161410; }
-  .recruit-tag {
-    display: inline-block; padding: 4px 12px; margin-bottom: 1.2rem;
-    border: 0.5px solid var(--border-gold);
-    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
-  }
-  .recruit-position { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--text); margin-bottom: 1rem; }
-  .recruit-desc { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--text-dim); }
-  .recruit-detail { display: flex; flex-direction: column; gap: 8px; margin-top: 1.5rem; }
-  .recruit-detail-row { display: flex; gap: 1rem; font-size: 12px; font-weight: 300; }
-  .recruit-detail-key { color: var(--gold); min-width: 60px; }
-  .recruit-detail-val { color: var(--text-dim); }
-  .recruit-cta { margin-top: 3rem; text-align: center; }
-  .recruit-note { font-size: 12px; font-weight: 300; color: var(--text-faint); margin-top: 1rem; letter-spacing: 0.05em; }
+/* ── MEMBERS ── */
+.members { background: var(--navy); border-top: 0.5px solid var(--border); }
+.members-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+.member-card { background: var(--navy-deep); padding: 2rem; text-align: center; transition: background 0.3s; }
+.member-card:hover { background: var(--navy-mid); }
+.member-avatar {
+  width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 1rem;
+  background: var(--navy); border: 1px solid var(--border-blue);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Shippori Mincho', serif; font-size: 22px; color: var(--blue-bright);
+}
+.member-name { font-family: 'Shippori Mincho', serif; font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.member-role { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 0.8rem; }
+.member-desc { font-size: 12px; font-weight: 300; line-height: 1.8; color: var(--white-dim); }
 
-  /* CONTACT */
-  .contact { background: var(--bg3); border-top: 0.5px solid var(--border-gold); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .contact-title { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; line-height: 1.2; color: var(--text); margin-bottom: 1.5rem; }
-  .contact-sub { font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--text-dim); margin-bottom: 2.5rem; }
-  .contact-mail { display: flex; align-items: center; gap: 10px; color: rgba(201,169,110,0.6); font-size: 12px; font-weight: 300; letter-spacing: 0.1em; }
-  .form-group { margin-bottom: 1.25rem; }
-  .form-input {
-    width: 100%; background: transparent; border: none;
-    border-bottom: 0.5px solid rgba(240,237,230,0.2);
-    color: var(--text); font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300;
-    padding: 12px 0; outline: none; transition: border-color 0.3s;
-  }
-  .form-input::placeholder { color: rgba(240,237,230,0.25); font-size: 12px; letter-spacing: 0.08em; }
-  .form-input:focus { border-bottom-color: var(--gold); }
-  textarea.form-input { resize: none; height: 80px; }
+/* ── TRAINING ── */
+.training { background: var(--navy-deep); border-top: 0.5px solid var(--border); }
+.training-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+.training-steps::before {
+  content: ''; position: absolute; top: 32px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-blue), transparent);
+  z-index: 0;
+}
+.training-step { padding: 0 1.5rem; text-align: center; position: relative; z-index: 1; }
+.training-step-dot {
+  width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 1.5rem;
+  background: var(--navy); border: 1px solid var(--border-blue);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--blue-bright);
+}
+.training-step-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 0.6rem; }
+.training-step-desc { font-size: 12px; font-weight: 300; line-height: 1.8; color: var(--white-dim); }
 
-  /* FOOTER */
-  .footer {
-    padding: 2.5rem 3rem; border-top: 0.5px solid var(--border);
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .footer-left { display: flex; flex-direction: column; gap: 6px; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 300; letter-spacing: 0.08em; color: rgba(240,237,230,0.4); }
-  .footer-tagline { font-size: 10px; font-weight: 300; letter-spacing: 0.15em; color: var(--text-faint); }
-  .footer-copy { font-size: 10px; font-weight: 300; letter-spacing: 0.08em; color: var(--text-faint); }
+/* ── RESULTS ── */
+.results { background: var(--navy); border-top: 0.5px solid var(--border); }
+.results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-bottom: 3rem; }
+.result-card { background: var(--navy-deep); padding: 2.5rem 2rem; text-align: center; }
+.result-num { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: var(--white); line-height: 1; }
+.result-num span { font-size: 32px; color: var(--blue-bright); }
+.result-label { font-size: 12px; font-weight: 300; letter-spacing: 0.08em; color: var(--white-dim); margin-top: 8px; }
+.results-note { text-align: center; font-size: 12px; color: var(--white-faint); letter-spacing: 0.08em; }
 
-  /* FADE IN ANIMATION */
-  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+/* ── RECRUIT ── */
+.recruit { background: var(--navy-deep); border-top: 0.5px solid var(--border); }
+.recruit-hero {
+  background: var(--navy); border: 0.5px solid var(--border-blue);
+  padding: 3rem; margin-bottom: 3rem; text-align: center; position: relative; overflow: hidden;
+}
+.recruit-hero::before {
+  content: 'RECRUIT'; font-family: 'Bebas Neue', sans-serif;
+  font-size: 180px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  color: rgba(59,130,246,0.04); white-space: nowrap; pointer-events: none;
+}
+.recruit-hero-title { font-family: 'Shippori Mincho', serif; font-size: 28px; font-weight: 600; color: var(--white); margin-bottom: 1rem; position: relative; }
+.recruit-hero-sub { font-size: 14px; font-weight: 300; color: var(--white-dim); line-height: 1.9; margin-bottom: 2rem; position: relative; }
+.recruit-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); }
+.recruit-card {
+  background: var(--navy); padding: 2.5rem;
+  transition: background 0.3s;
+}
+.recruit-card:hover { background: var(--navy-mid); }
+.recruit-tag {
+  display: inline-block; padding: 4px 12px; margin-bottom: 1.2rem;
+  background: rgba(59,130,246,0.1); border: 0.5px solid var(--border-blue);
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-bright);
+}
+.recruit-position { font-family: 'Shippori Mincho', serif; font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 1rem; }
+.recruit-desc { font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--white-dim); margin-bottom: 1.5rem; }
+.recruit-details { display: flex; flex-direction: column; gap: 8px; }
+.recruit-detail-row { display: flex; gap: 1rem; font-size: 12px; }
+.recruit-detail-key { color: var(--blue-bright); min-width: 60px; }
+.recruit-detail-val { color: var(--white-dim); }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-    .nav-mobile {
-      display: none; flex-direction: column; gap: 0;
-      background: rgba(10,10,10,0.98); border-bottom: 0.5px solid var(--border);
-    }
-    .nav-mobile.open { display: flex; }
-    .nav-mobile a {
-      padding: 1rem 1.5rem; font-size: 12px; font-weight: 300; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--text-dim); text-decoration: none;
-      border-bottom: 0.5px solid var(--border);
-    }
-    .hero { padding: 3rem 1.5rem; min-height: 70vh; }
-    .hero-bg { width: 100%; clip-path: none; opacity: 0.3; }
-    .hero-line { display: none; }
-    .hero-stats { gap: 2rem; flex-wrap: wrap; }
-    .section { padding: 3.5rem 1.5rem; }
-    .service-grid { grid-template-columns: 1fr; }
-    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .recruit-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
-  }
+/* ── CONTACT ── */
+.contact { background: var(--navy); border-top: 0.5px solid var(--border-blue); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+.contact-title { font-family: 'Shippori Mincho', serif; font-size: 36px; font-weight: 600; color: var(--white); margin-bottom: 1.5rem; line-height: 1.3; }
+.contact-sub { font-size: 14px; font-weight: 300; line-height: 1.9; color: var(--white-dim); margin-bottom: 2rem; }
+.contact-channels { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+.contact-channel {
+  display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem;
+  border: 0.5px solid var(--border); background: var(--white-ghost);
+  font-size: 13px; color: var(--white-dim); transition: border-color 0.25s;
+  cursor: pointer;
+}
+.contact-channel:hover { border-color: var(--border-blue); color: var(--blue-bright); }
+.contact-channel-icon { font-size: 18px; }
+.form-group { margin-bottom: 1.2rem; }
+.form-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white-dim); margin-bottom: 6px; display: block; }
+.form-input {
+  width: 100%; background: var(--white-ghost);
+  border: 0.5px solid var(--border);
+  color: var(--white); font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 300;
+  padding: 12px 14px; outline: none; transition: border-color 0.3s;
+}
+.form-input::placeholder { color: var(--white-faint); }
+.form-input:focus { border-color: var(--blue-bright); }
+.form-select { appearance: none; cursor: pointer; }
+textarea.form-input { resize: vertical; min-height: 100px; }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--navy-deep); border-top: 0.5px solid var(--border);
+  padding: 3rem;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
+  padding-bottom: 3rem; border-bottom: 0.5px solid var(--border);
+}
+.footer-logo-area .logo { font-family: 'Shippori Mincho', serif; font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 0.8rem; }
+.footer-logo-area .tagline { font-size: 12px; font-weight: 300; color: var(--white-dim); line-height: 1.8; max-width: 220px; }
+.footer-col-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 1.2rem; }
+.footer-col-links { display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-col-links a { font-size: 13px; font-weight: 300; color: var(--white-dim); transition: color 0.25s; }
+.footer-col-links a:hover { color: var(--blue-bright); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-size: 11px; color: var(--white-faint); letter-spacing: 0.06em; }
+.footer-sns { display: flex; gap: 1rem; }
+.footer-sns a {
+  width: 36px; height: 36px; border: 0.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: var(--white-dim); transition: all 0.25s;
+}
+.footer-sns a:hover { border-color: var(--blue-bright); color: var(--blue-bright); }
+
+/* ── SCROLL FADE ── */
+.fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .nav { padding: 1rem 1.2rem; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .section { padding: 3.5rem 1.2rem; }
+  .hero { padding: 4rem 1.2rem 3rem; min-height: 80vh; }
+  .hero-stats { flex-direction: column; width: 100%; }
+  .hero-stat { padding: 1rem 1.5rem; }
+  .hero-scroll { display: none; }
+  .mvv-values { grid-template-columns: 1fr 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .greeting-inner { grid-template-columns: 1fr; }
+  .intern-grid { grid-template-columns: 1fr; }
+  .members-grid { grid-template-columns: 1fr 1fr; }
+  .training-steps { grid-template-columns: 1fr 1fr; }
+  .training-steps::before { display: none; }
+  .results-grid { grid-template-columns: 1fr; }
+  .recruit-cards { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="#" class="nav-logo">ÉLAN <span>Groupe</span></a>
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">ÉLAN <span class="accent">Groupe</span></a>
   <ul class="nav-links">
+    <li><a href="#mvv">MVV</a></li>
     <li><a href="#services">事業内容</a></li>
-    <li><a href="#about">会社概要</a></li>
-    <li><a href="#philosophy">理念</a></li>
-    <li><a href="#recruit">採用情報</a></li>
+    <li><a href="#intern">インターン</a></li>
+    <li><a href="#members">メンバー</a></li>
+    <li><a href="#recruit">採用</a></li>
     <li><a href="#contact">お問い合わせ</a></li>
   </ul>
-  <div class="nav-hamburger" onclick="toggleMenu()" aria-label="メニュー">
-    <span></span><span></span><span></span>
-  </div>
+  <a class="nav-cta" href="#recruit">採用エントリー →</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
-
-<div class="nav-mobile" id="mobileMenu">
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#mvv" onclick="toggleMenu()">MVV</a>
   <a href="#services" onclick="toggleMenu()">事業内容</a>
-  <a href="#about" onclick="toggleMenu()">会社概要</a>
-  <a href="#philosophy" onclick="toggleMenu()">理念</a>
-  <a href="#recruit" onclick="toggleMenu()">採用情報</a>
+  <a href="#intern" onclick="toggleMenu()">インターン</a>
+  <a href="#members" onclick="toggleMenu()">メンバー</a>
+  <a href="#recruit" onclick="toggleMenu()">採用</a>
   <a href="#contact" onclick="toggleMenu()">お問い合わせ</a>
 </div>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-line"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Sales Force Solutions</p>
-    <h1 class="hero-title">営業の力で、<br><em>未来を動かす。</em></h1>
-    <p class="hero-desc">株式会社 ÉLAN Groupe は、訪問販売・催事を軸とした営業支援を展開。クライアントの成長を力強く後押しします。</p>
-    <a class="btn" href="#contact">お問い合わせ →</a>
+    <div class="hero-badge">Sales Force × Growth Organization</div>
+    <h1 class="hero-mission">
+      日本の若者の<br>
+      <span class="line2">常識を変える。</span>
+    </h1>
+    <p class="hero-jp">本気で成長したい若者が集まる組織<br>株式会社 ÉLAN Groupe</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#recruit">採用エントリー →</a>
+      <a class="btn-outline" href="#services">事業内容を見る</a>
+    </div>
     <div class="hero-stats">
-      <div>
-        <div class="stat-num">27</div>
-        <div class="stat-label">従業員数</div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">27<span>名</span></div>
+        <div class="hero-stat-l">従業員数</div>
       </div>
-      <div>
-        <div class="stat-num">2</div>
-        <div class="stat-label">主要事業</div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">4<span>事業</span></div>
+        <div class="hero-stat-l">展開中</div>
       </div>
-      <div>
-        <div class="stat-num">∞</div>
-        <div class="stat-label">可能性</div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">21<span>歳</span></div>
+        <div class="hero-stat-l">代表取締役</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- MVV -->
+<section id="mvv" class="mvv section fade-up">
+  <div class="mvv-inner">
+    <div class="mvv-mission-label">— Mission —</div>
+    <div class="mvv-mission-text">「日本の若者の常識を変える。」</div>
+    <div class="mvv-divider"></div>
+    <div class="mvv-values-label">— Values —</div>
+    <div class="mvv-values">
+      <div class="mvv-value-card">
+        <div class="mvv-value-num">01</div>
+        <div class="mvv-value-text">本気で生きる</div>
+        <div class="mvv-value-sub">妥協せず、全力で取り組む姿勢を大切にする</div>
+      </div>
+      <div class="mvv-value-card">
+        <div class="mvv-value-num">02</div>
+        <div class="mvv-value-text">圧倒的当事者意識</div>
+        <div class="mvv-value-sub">すべてを自分ごととして捉え、行動する</div>
+      </div>
+      <div class="mvv-value-card">
+        <div class="mvv-value-num">03</div>
+        <div class="mvv-value-text">仲間と熱狂する</div>
+        <div class="mvv-value-sub">チームで目標に向かい、共に熱くなる</div>
+      </div>
+      <div class="mvv-value-card">
+        <div class="mvv-value-num">04</div>
+        <div class="mvv-value-text">飲水思源</div>
+        <div class="mvv-value-sub">感謝を忘れず、支えてくれる人を大切にする</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="services" class="services section fade-in">
-  <p class="section-label">Services</p>
-  <h2 class="section-title">私たちの事業</h2>
-  <div class="service-grid">
+<!-- GREETING -->
+<section id="greeting" class="greeting section fade-up">
+  <div class="greeting-inner">
+    <div class="greeting-photo">
+      <div class="greeting-photo-placeholder">
+        <div class="initial">那</div>
+        <div class="greeting-photo-note">Photo Coming Soon</div>
+      </div>
+      <div class="greeting-photo-border"></div>
+    </div>
+    <div>
+      <div class="section-eyebrow">代表挨拶</div>
+      <h2 class="section-title"><span class="en">CEO Message</span>本気の集団を、つくる。</h2>
+      <div class="greeting-role">代表取締役 CEO</div>
+      <div class="greeting-name">那須 尋仁</div>
+      <div class="greeting-name-en">Hiroto Nasu — 21 years old</div>
+      <p class="greeting-text">
+        「若いから」「経験がないから」——そんな言い訳が通用しない世界をつくりたい。<br><br>
+        ÉLAN Groupeは、本気で生きたい人間が集まる場所です。年齢も関係ない。学歴も関係ない。大事なのは、今この瞬間にどれだけ熱くなれるか。<br><br>
+        私たちは若者の可能性を信じ、その力を最大限に引き出す組織を目指しています。
+      </p>
+      <div class="greeting-sig">那須 尋仁</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services section fade-up">
+  <div class="section-eyebrow">事業内容</div>
+  <h2 class="section-title"><span class="en">Business</span>4つの事業で、市場を切り拓く。</h2>
+  <div class="services-grid">
     <div class="service-card">
       <div class="service-num">01</div>
-      <div class="service-name">訪問販売</div>
-      <p class="service-desc">お客様のもとへ直接伺い、丁寧な対話を通じて信頼関係を築く訪問型の営業支援を行います。</p>
+      <div class="service-name">通信インフラ事業</div>
+      <div class="service-name-en">Telecom Infrastructure</div>
+      <p class="service-desc">通信インフラの普及・拡大を支援。暮らしに不可欠なサービスをお客様のもとへ届けます。</p>
       <div class="service-badge">● 提供中</div>
     </div>
     <div class="service-card">
       <div class="service-num">02</div>
-      <div class="service-name">催事販売</div>
-      <p class="service-desc">イベント・展示会などの催事に特化した営業チームを展開。短期集中型でのブランド訴求を支援します。</p>
+      <div class="service-name">FS（訪問販売）事業</div>
+      <div class="service-name-en">Field Sales</div>
+      <p class="service-desc">お客様のもとへ直接伺い、対話を通じて信頼関係を築く訪問型の営業支援を展開します。</p>
       <div class="service-badge">● 提供中</div>
     </div>
     <div class="service-card">
       <div class="service-num">03</div>
-      <div class="service-name">テレアポ</div>
-      <p class="service-desc">電話を活用したアポイントメント獲得サービス。準備を進めており、近日中に提供開始予定です。</p>
-      <div class="service-badge coming">○ Coming Soon</div>
+      <div class="service-name">ES（催事営業）事業</div>
+      <div class="service-name-en">Event Sales</div>
+      <p class="service-desc">イベント・展示会に特化した営業チームを展開。短期集中型でのブランド訴求を支援します。</p>
+      <div class="service-badge">● 提供中</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-name">営業コンサルティング・採用支援</div>
+      <div class="service-name-en">Consulting &amp; HR Support</div>
+      <p class="service-desc">営業組織の課題解決から採用支援まで、クライアントの成長を多角的にサポートします。</p>
+      <div class="service-badge">● 提供中</div>
     </div>
   </div>
 </section>
 
-<section id="about" class="section fade-in">
-  <p class="section-label">About Us</p>
-  <h2 class="section-title">会社概要</h2>
-  <div class="about-grid">
-    <div class="about-left">
-      <div class="info-row"><span class="info-key">社名</span><span class="info-val">株式会社 ÉLAN Groupe</span></div>
-      <div class="info-row"><span class="info-key">代表取締役</span><span class="info-val">那須 尋仁</span></div>
-      <div class="info-row"><span class="info-key">従業員数</span><span class="info-val">27名</span></div>
-      <div class="info-row"><span class="info-key">主な業務</span><span class="info-val">営業支援</span></div>
-      <div class="info-row"><span class="info-key">設立</span><span class="info-val pending">— 準備中 —</span></div>
-      <div class="info-row"><span class="info-key">所在地</span><span class="info-val pending">— 準備中 —</span></div>
-    </div>
-    <div>
-      <div class="profile-card">
-        <div class="avatar">那</div>
+<!-- INTERN -->
+<section id="intern" class="intern section fade-up">
+  <div class="section-eyebrow">インターン紹介</div>
+  <h2 class="section-title"><span class="en">Internship</span>学生が本気になれる環境。</h2>
+  <div class="intern-grid">
+    <div class="intern-points">
+      <div class="intern-point">
+        <div class="intern-point-num">01</div>
         <div>
-          <div class="profile-name">那須 尋仁</div>
-          <div class="profile-role">代表取締役 CEO — 21歳</div>
+          <div class="intern-point-title">即戦力として活躍できる</div>
+          <p class="intern-point-desc">学生インターンでも、現場に立ち、実績を積むことができます。教えてもらうだけでなく、自分で動いて成長する環境です。</p>
         </div>
       </div>
-      <p class="about-note">若きリーダーシップのもと、ÉLAN Groupe は営業支援のプロ集団として急成長中。訪問・催事を軸に、クライアントの売上拡大に貢献しています。</p>
+      <div class="intern-point">
+        <div class="intern-point-num">02</div>
+        <div>
+          <div class="intern-point-title">営業の本質を学べる</div>
+          <p class="intern-point-desc">訪問販売・催事という最も難易度の高い営業フィールドで、コミュニケーション力・提案力・精神力を磨きます。</p>
+        </div>
+      </div>
+      <div class="intern-point">
+        <div class="intern-point-num">03</div>
+        <div>
+          <div class="intern-point-title">成果に対して正当に評価</div>
+          <p class="intern-point-desc">年齢・経歴不問。出した結果に対してきちんと評価される、フェアな環境を整えています。</p>
+        </div>
+      </div>
+      <div class="intern-point">
+        <div class="intern-point-num">04</div>
+        <div>
+          <div class="intern-point-title">本気の仲間と出会える</div>
+          <p class="intern-point-desc">同じ熱量を持った仲間と切磋琢磨できる環境。就活でも人生でも、ここでの経験は必ず力になります。</p>
+        </div>
+      </div>
+    </div>
+    <div class="intern-aside">
+      <div class="intern-aside-title">インターン生の声</div>
+      <div class="intern-voice">
+        <p class="intern-voice-text">「入社初月から現場に立てた。怖かったけど、それが一番成長できた理由だと思う。」</p>
+        <div class="intern-voice-name">大学3年生 — インターン生</div>
+      </div>
+      <div class="intern-voice">
+        <p class="intern-voice-text">「本気でやれば、ちゃんと評価してくれる会社。学生でもやる気次第で何でもできる。」</p>
+        <div class="intern-voice-name">大学2年生 — インターン生</div>
+      </div>
+      <div class="intern-voice">
+        <p class="intern-voice-text">「ここで過ごした3ヶ月で、就活への自信が全然違うレベルになった。」</p>
+        <div class="intern-voice-name">大学4年生 — インターン生</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="philosophy" class="philosophy section fade-in">
-  <div class="phi-inner">
-    <p class="section-label" style="text-align:center;">Philosophy</p>
-    <div class="phi-quote">理念・ビジョン<br>（準備中）</div>
-    <p class="phi-note">※ 近日更新予定</p>
+<!-- MEMBERS -->
+<section id="members" class="members section fade-up">
+  <div class="section-eyebrow">メンバー紹介</div>
+  <h2 class="section-title"><span class="en">Members</span>本気の仲間たち。</h2>
+  <div class="members-grid">
+    <div class="member-card">
+      <div class="member-avatar">那</div>
+      <div class="member-name">那須 尋仁</div>
+      <div class="member-role">代表取締役 CEO</div>
+      <p class="member-desc">21歳。「日本の若者の常識を変える」をミッションに、ÉLAN Groupeを創業。</p>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">役</div>
+      <div class="member-name">役員 A</div>
+      <div class="member-role">取締役 / 準備中</div>
+      <p class="member-desc">プロフィール準備中</p>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">役</div>
+      <div class="member-name">役員 B</div>
+      <div class="member-role">取締役 / 準備中</div>
+      <p class="member-desc">プロフィール準備中</p>
+    </div>
   </div>
 </section>
 
-<section id="recruit" class="recruit section fade-in">
-  <p class="section-label">Recruit</p>
-  <h2 class="section-title">採用情報</h2>
-  <div class="recruit-grid">
+<!-- TRAINING -->
+<section id="training" class="training section fade-up">
+  <div class="section-eyebrow">研修制度</div>
+  <h2 class="section-title"><span class="en">Training</span>ゼロから本物の営業力へ。</h2>
+  <div class="training-steps">
+    <div class="training-step">
+      <div class="training-step-dot">01</div>
+      <div class="training-step-title">基礎研修</div>
+      <p class="training-step-desc">ビジネスマナー・営業の基本・マインドセットを徹底的に叩き込む</p>
+    </div>
+    <div class="training-step">
+      <div class="training-step-dot">02</div>
+      <div class="training-step-title">同行研修</div>
+      <p class="training-step-desc">先輩と共に現場へ。実際の営業を肌で感じながら学ぶ</p>
+    </div>
+    <div class="training-step">
+      <div class="training-step-dot">03</div>
+      <div class="training-step-title">独り立ち</div>
+      <p class="training-step-desc">一人で現場へ。失敗を経験しながら本物の力をつける</p>
+    </div>
+    <div class="training-step">
+      <div class="training-step-dot">04</div>
+      <div class="training-step-title">リーダーへ</div>
+      <p class="training-step-desc">実績を積んでチームを率いるリーダーポジションへ</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="results section fade-up">
+  <div class="section-eyebrow">実績</div>
+  <h2 class="section-title"><span class="en">Results</span>数字が、証明する。</h2>
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-num">—<span></span></div>
+      <div class="result-label">営業実績（準備中）</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num">—<span></span></div>
+      <div class="result-label">インターン生成果（準備中）</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num">27<span>名</span></div>
+      <div class="result-label">現在の従業員数</div>
+    </div>
+  </div>
+  <p class="results-note">※ 実績データは順次更新予定です</p>
+</section>
+
+<!-- RECRUIT -->
+<section id="recruit" class="recruit section fade-up">
+  <div class="section-eyebrow">採用情報</div>
+  <h2 class="section-title"><span class="en">Recruit</span>本気の人を、求めている。</h2>
+  <div class="recruit-hero">
+    <div class="recruit-hero-title">「成長したい」その気持ちだけで十分。</div>
+    <p class="recruit-hero-sub">学歴・経験・年齢は問いません。大切なのは、本気で変わりたいという意志だけ。</p>
+    <a class="btn-primary" href="#contact">エントリーする →</a>
+  </div>
+  <div class="recruit-cards">
     <div class="recruit-card">
-      <div class="recruit-tag">正社員</div>
-      <div class="recruit-position">営業スタッフ</div>
-      <p class="recruit-desc">訪問販売・催事販売の最前線で活躍するメンバーを募集しています。未経験からでも成長できる環境です。</p>
-      <div class="recruit-detail">
+      <div class="recruit-tag">学生インターン</div>
+      <div class="recruit-position">営業インターンシップ</div>
+      <p class="recruit-desc">実際の現場で営業を経験。就活を有利に進めたい、本物のビジネス力をつけたい学生を歓迎します。</p>
+      <div class="recruit-details">
+        <div class="recruit-detail-row"><span class="recruit-detail-key">対象</span><span class="recruit-detail-val">大学生（学年不問）</span></div>
+        <div class="recruit-detail-row"><span class="recruit-detail-key">期間</span><span class="recruit-detail-val">1ヶ月〜（応相談）</span></div>
+        <div class="recruit-detail-row"><span class="recruit-detail-key">給与</span><span class="recruit-detail-val">成果報酬制（準備中）</span></div>
         <div class="recruit-detail-row"><span class="recruit-detail-key">勤務地</span><span class="recruit-detail-val">準備中</span></div>
-        <div class="recruit-detail-row"><span class="recruit-detail-key">給与</span><span class="recruit-detail-val">準備中</span></div>
-        <div class="recruit-detail-row"><span class="recruit-detail-key">待遇</span><span class="recruit-detail-val">準備中</span></div>
       </div>
     </div>
     <div class="recruit-card">
       <div class="recruit-tag">正社員</div>
-      <div class="recruit-position">マネージャー候補</div>
-      <p class="recruit-desc">チームをまとめ、営業組織をリードするマネージャー候補を募集しています。成長意欲のある方を歓迎します。</p>
-      <div class="recruit-detail">
-        <div class="recruit-detail-row"><span class="recruit-detail-key">勤務地</span><span class="recruit-detail-val">準備中</span></div>
+      <div class="recruit-position">営業スタッフ・マネージャー候補</div>
+      <p class="recruit-desc">ÉLAN Groupeと共に成長したい正社員を募集。将来のリーダー・マネージャーを目指す方を歓迎します。</p>
+      <div class="recruit-details">
+        <div class="recruit-detail-row"><span class="recruit-detail-key">対象</span><span class="recruit-detail-val">新卒・第二新卒・既卒</span></div>
+        <div class="recruit-detail-row"><span class="recruit-detail-key">雇用</span><span class="recruit-detail-val">正社員</span></div>
         <div class="recruit-detail-row"><span class="recruit-detail-key">給与</span><span class="recruit-detail-val">準備中</span></div>
-        <div class="recruit-detail-row"><span class="recruit-detail-key">待遇</span><span class="recruit-detail-val">準備中</span></div>
+        <div class="recruit-detail-row"><span class="recruit-detail-key">勤務地</span><span class="recruit-detail-val">準備中</span></div>
       </div>
     </div>
   </div>
-  <div class="recruit-cta">
-    <a class="btn" href="#contact">採用についてお問い合わせ →</a>
-    <p class="recruit-note">※ 詳細は順次更新予定です</p>
-  </div>
 </section>
 
-<section id="contact" class="contact section fade-in">
+<!-- CONTACT -->
+<section id="contact" class="contact section fade-up">
   <div class="contact-grid">
     <div>
-      <p class="section-label">Contact</p>
-      <h2 class="contact-title">お気軽に<br>ご相談ください。</h2>
-      <p class="contact-sub">営業支援に関するご相談・ご依頼は、こちらのフォームよりお気軽にお問い合わせください。担当者よりご連絡いたします。</p>
-      <div class="contact-mail">✉ info@elan-groupe.jp（仮）</div>
+      <div class="section-eyebrow">お問い合わせ</div>
+      <h2 class="contact-title">まず、<br>話してみよう。</h2>
+      <p class="contact-sub">採用エントリー・事業のご相談・取材など、お気軽にご連絡ください。</p>
+      <div class="contact-channels">
+        <div class="contact-channel">
+          <span class="contact-channel-icon">✉</span>
+          <span>info@elan-groupe.jp（仮）</span>
+        </div>
+        <div class="contact-channel">
+          <span class="contact-channel-icon">💬</span>
+          <span>LINE公式アカウント（準備中）</span>
+        </div>
+        <div class="contact-channel">
+          <span class="contact-channel-icon">📷</span>
+          <span>Instagram（準備中）</span>
+        </div>
+      </div>
     </div>
     <div>
-      <div class="form-group"><input class="form-input" type="text" placeholder="お名前 / Company Name" /></div>
-      <div class="form-group"><input class="form-input" type="email" placeholder="メールアドレス" /></div>
-      <div class="form-group"><input class="form-input" type="tel" placeholder="電話番号（任意）" /></div>
-      <div class="form-group"><textarea class="form-input" placeholder="お問い合わせ内容"></textarea></div>
-      <div style="margin-top:1.5rem;">
-        <button class="btn" style="width:100%;justify-content:center;">送信する →</button>
+      <div class="form-group">
+        <label class="form-label">お名前 *</label>
+        <input class="form-input" type="text" placeholder="山田 太郎">
       </div>
+      <div class="form-group">
+        <label class="form-label">メールアドレス *</label>
+        <input class="form-input" type="email" placeholder="example@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">電話番号</label>
+        <input class="form-input" type="tel" placeholder="090-0000-0000">
+      </div>
+      <div class="form-group">
+        <label class="form-label">お問い合わせ種別 *</label>
+        <select class="form-input form-select">
+          <option value="">選択してください</option>
+          <option>採用エントリー（インターン）</option>
+          <option>採用エントリー（正社員）</option>
+          <option>事業・取引に関するご相談</option>
+          <option>取材・メディアに関するお問い合わせ</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">メッセージ *</label>
+        <textarea class="form-input" placeholder="お気軽にご記入ください"></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;">送信する →</button>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-left">
-    <div class="footer-logo">ÉLAN Groupe</div>
-    <div class="footer-tagline">Sales Force Solutions</div>
+  <div class="footer-top">
+    <div class="footer-logo-area">
+      <div class="logo">ÉLAN Groupe</div>
+      <p class="tagline">日本の若者の常識を変える。<br>本気の人間が集まる組織。</p>
+    </div>
+    <div>
+      <div class="footer-col-title">事業内容</div>
+      <div class="footer-col-links">
+        <a href="#services">通信インフラ事業</a>
+        <a href="#services">FS（訪問販売）事業</a>
+        <a href="#services">ES（催事営業）事業</a>
+        <a href="#services">営業コンサルティング</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">会社情報</div>
+      <div class="footer-col-links">
+        <a href="#mvv">MVV</a>
+        <a href="#greeting">代表挨拶</a>
+        <a href="#members">メンバー</a>
+        <a href="#results">実績</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">採用・お問い合わせ</div>
+      <div class="footer-col-links">
+        <a href="#intern">インターン採用</a>
+        <a href="#recruit">正社員採用</a>
+        <a href="#contact">お問い合わせ</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-copy">© 2025 株式会社 ÉLAN Groupe. All rights reserved.</div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 株式会社 ÉLAN Groupe. All rights reserved.</div>
+    <div class="footer-sns">
+      <a href="#" title="Instagram">IG</a>
+      <a href="#" title="Twitter/X">X</a>
+      <a href="#" title="LINE">LINE</a>
+    </div>
+  </div>
 </footer>
 
 <script>
-  function toggleMenu() {
-    const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('open');
-  }
-
-  // Fade in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.08 }
+);
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
