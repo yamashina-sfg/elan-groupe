@@ -2,6 +2,7 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400;500&display=swap');
 
+  html { scroll-behavior: smooth; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   .hp-root {
@@ -479,11 +480,11 @@
   <nav class="hp-nav">
     <div class="hp-logo">ÉLAN <span>Groupe</span></div>
     <ul class="hp-nav-links">
-      <li><a href="#">事業内容</a></li>
-      <li><a href="#">会社概要</a></li>
-      <li><a href="#">理念</a></li>
-      <li><a href="#">採用情報</a></li>
-      <li><a href="#">お問い合わせ</a></li>
+      <li><a href="#services">事業内容</a></li>
+      <li><a href="#about">会社概要</a></li>
+      <li><a href="#philosophy">理念</a></li>
+      <li><a href="#recruit">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
     </ul>
   </nav>
 
@@ -515,7 +516,7 @@
     </div>
   </section>
 
-  <section class="hp-services hp-section">
+  <section id="services" class="hp-services hp-section">
     <p class="hp-section-label">Services</p>
     <h2 class="hp-section-title">私たちの事業</h2>
     <div class="hp-service-grid">
@@ -549,7 +550,7 @@
     </div>
   </section>
 
-  <section class="hp-section">
+  <section id="about" class="hp-section">
     <p class="hp-section-label">About Us</p>
     <h2 class="hp-section-title">会社概要</h2>
     <div class="hp-about">
@@ -590,7 +591,7 @@
     </div>
   </section>
 
-  <section class="hp-philosophy hp-section">
+  <section id="philosophy" class="hp-philosophy hp-section">
     <div class="hp-phi-inner">
       <p class="hp-section-label" style="text-align:center;">Philosophy</p>
       <div class="hp-phi-quote">理念・ビジョン<br>（準備中）</div>
@@ -598,7 +599,7 @@
     </div>
   </section>
 
-  <section class="hp-contact hp-section">
+  <section id="contact" class="hp-contact hp-section">
     <div class="hp-contact-inner">
       <div>
         <p class="hp-section-label">Contact</p>
