@@ -1,0 +1,639 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .hp-root {
+    font-family: 'Jost', sans-serif;
+    background: #0a0a0a;
+    color: #f0ede6;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  .hp-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    border-bottom: 0.5px solid rgba(240,237,230,0.12);
+    position: relative;
+    z-index: 10;
+  }
+
+  .hp-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: #f0ede6;
+  }
+
+  .hp-logo span {
+    color: #c9a96e;
+  }
+
+  .hp-nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .hp-nav-links a {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.6);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .hp-nav-links a:hover { color: #c9a96e; }
+
+  .hp-hero {
+    min-height: 82vh;
+    display: flex;
+    align-items: center;
+    padding: 5rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hp-hero-bg {
+    position: absolute;
+    top: 0; right: 0;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1208 0%, #0d0d0d 60%);
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 0;
+  }
+
+  .hp-hero-accent {
+    position: absolute;
+    top: 30%;
+    right: 18%;
+    width: 1px;
+    height: 180px;
+    background: linear-gradient(to bottom, transparent, #c9a96e, transparent);
+    opacity: 0.5;
+  }
+
+  .hp-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+  }
+
+  .hp-tagline {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #c9a96e;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hp-tagline::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 0.5px;
+    background: #c9a96e;
+  }
+
+  .hp-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 76px);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+    color: #f0ede6;
+  }
+
+  .hp-hero-title em {
+    font-style: italic;
+    color: #c9a96e;
+  }
+
+  .hp-hero-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(240,237,230,0.55);
+    margin-bottom: 3rem;
+    max-width: 380px;
+  }
+
+  .hp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border: 0.5px solid #c9a96e;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c9a96e;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .hp-btn:hover {
+    background: #c9a96e;
+    color: #0a0a0a;
+  }
+
+  .hp-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 0.5px solid rgba(240,237,230,0.1);
+  }
+
+  .hp-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: #c9a96e;
+    line-height: 1;
+  }
+
+  .hp-stat-label {
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.4);
+    margin-top: 6px;
+  }
+
+  .hp-section {
+    padding: 5rem 3rem;
+  }
+
+  .hp-section-label {
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #c9a96e;
+    margin-bottom: 1rem;
+  }
+
+  .hp-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: #f0ede6;
+    margin-bottom: 3rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hp-services {
+    background: #0f0e0b;
+    border-top: 0.5px solid rgba(240,237,230,0.08);
+    border-bottom: 0.5px solid rgba(240,237,230,0.08);
+  }
+
+  .hp-service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(240,237,230,0.08);
+    border: 0.5px solid rgba(240,237,230,0.08);
+  }
+
+  .hp-service-card {
+    background: #0f0e0b;
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .hp-service-card:hover {
+    background: #161410;
+  }
+
+  .hp-service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: rgba(201,169,110,0.15);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .hp-service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #f0ede6;
+    margin-bottom: 1rem;
+  }
+
+  .hp-service-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(240,237,230,0.45);
+  }
+
+  .hp-service-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 1.5rem;
+    padding: 5px 14px;
+    border: 0.5px solid rgba(201,169,110,0.4);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.7);
+  }
+
+  .hp-service-badge.coming {
+    border-color: rgba(240,237,230,0.15);
+    color: rgba(240,237,230,0.3);
+  }
+
+  .hp-about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .hp-about-left {
+    border-left: 0.5px solid rgba(201,169,110,0.3);
+    padding-left: 2.5rem;
+  }
+
+  .hp-about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .hp-profile-card {
+    background: rgba(201,169,110,0.04);
+    border: 0.5px solid rgba(201,169,110,0.2);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .hp-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2a2010, #1a1208);
+    border: 0.5px solid rgba(201,169,110,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: #c9a96e;
+    flex-shrink: 0;
+  }
+
+  .hp-profile-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: #f0ede6;
+    margin-bottom: 4px;
+  }
+
+  .hp-profile-role {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.7);
+  }
+
+  .hp-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-bottom: 0.5px solid rgba(240,237,230,0.07);
+  }
+
+  .hp-info-key {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.35);
+  }
+
+  .hp-info-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #f0ede6;
+  }
+
+  .hp-philosophy {
+    background: #080706;
+    border-top: 0.5px solid rgba(240,237,230,0.06);
+  }
+
+  .hp-phi-inner {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hp-phi-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(240,237,230,0.18);
+    letter-spacing: 0.02em;
+    font-style: italic;
+    padding: 2rem 0;
+    border-top: 0.5px solid rgba(240,237,230,0.08);
+    border-bottom: 0.5px solid rgba(240,237,230,0.08);
+    margin-bottom: 1.5rem;
+  }
+
+  .hp-phi-note {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: rgba(240,237,230,0.2);
+  }
+
+  .hp-contact {
+    background: #111009;
+    border-top: 0.5px solid rgba(201,169,110,0.15);
+  }
+
+  .hp-contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .hp-contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1.2;
+    color: #f0ede6;
+    margin-bottom: 1.5rem;
+  }
+
+  .hp-contact-sub {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(240,237,230,0.4);
+    margin-bottom: 2.5rem;
+  }
+
+  .hp-form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .hp-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 0.5px solid rgba(240,237,230,0.2);
+    color: #f0ede6;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 12px 0;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .hp-input::placeholder {
+    color: rgba(240,237,230,0.25);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .hp-input:focus {
+    border-bottom-color: #c9a96e;
+  }
+
+  .hp-textarea {
+    resize: none;
+    height: 80px;
+  }
+
+  .hp-submit {
+    margin-top: 1.5rem;
+  }
+
+  .hp-footer {
+    padding: 2rem 3rem;
+    border-top: 0.5px solid rgba(240,237,230,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hp-footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: rgba(240,237,230,0.4);
+  }
+
+  .hp-footer-copy {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: rgba(240,237,230,0.2);
+  }
+</style>
+
+<div class="hp-root">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">株式会社 ÉLAN Groupe — 営業支援会社のホームページ</h2>
+
+  <nav class="hp-nav">
+    <div class="hp-logo">ÉLAN <span>Groupe</span></div>
+    <ul class="hp-nav-links">
+      <li><a href="#">事業内容</a></li>
+      <li><a href="#">会社概要</a></li>
+      <li><a href="#">理念</a></li>
+      <li><a href="#">採用情報</a></li>
+      <li><a href="#">お問い合わせ</a></li>
+    </ul>
+  </nav>
+
+  <section class="hp-hero">
+    <div class="hp-hero-bg"></div>
+    <div class="hp-hero-accent"></div>
+    <div class="hp-hero-content">
+      <p class="hp-tagline">Sales Force Solutions</p>
+      <h1 class="hp-hero-title">営業の力で、<br><em>未来を動かす。</em></h1>
+      <p class="hp-hero-desc">株式会社 ÉLAN Groupe は、訪問販売・催事を軸とした営業支援を展開。クライアントの成長を力強く後押しします。</p>
+      <a class="hp-btn" href="#">
+        お問い合わせ
+        <i class="ti ti-arrow-right" style="font-size:14px;" aria-hidden="true"></i>
+      </a>
+      <div class="hp-stats">
+        <div>
+          <div class="hp-stat-num">27</div>
+          <div class="hp-stat-label">従業員数</div>
+        </div>
+        <div>
+          <div class="hp-stat-num">2</div>
+          <div class="hp-stat-label">主要事業</div>
+        </div>
+        <div>
+          <div class="hp-stat-num">∞</div>
+          <div class="hp-stat-label">可能性</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hp-services hp-section">
+    <p class="hp-section-label">Services</p>
+    <h2 class="hp-section-title">私たちの事業</h2>
+    <div class="hp-service-grid">
+      <div class="hp-service-card">
+        <div class="hp-service-num">01</div>
+        <div class="hp-service-name">訪問販売</div>
+        <p class="hp-service-desc">お客様のもとへ直接伺い、丁寧な対話を通じて信頼関係を築く訪問型の営業支援を行います。</p>
+        <div class="hp-service-badge">
+          <i class="ti ti-check" style="font-size:10px;" aria-hidden="true"></i>
+          提供中
+        </div>
+      </div>
+      <div class="hp-service-card">
+        <div class="hp-service-num">02</div>
+        <div class="hp-service-name">催事販売</div>
+        <p class="hp-service-desc">イベント・展示会などの催事に特化した営業チームを展開。短期集中型でのブランド訴求を支援します。</p>
+        <div class="hp-service-badge">
+          <i class="ti ti-check" style="font-size:10px;" aria-hidden="true"></i>
+          提供中
+        </div>
+      </div>
+      <div class="hp-service-card">
+        <div class="hp-service-num">03</div>
+        <div class="hp-service-name">テレアポ</div>
+        <p class="hp-service-desc">電話を活用したアポイントメント獲得サービス。準備を進めており、近日中に提供開始予定です。</p>
+        <div class="hp-service-badge coming">
+          <i class="ti ti-clock" style="font-size:10px;" aria-hidden="true"></i>
+          Coming Soon
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hp-section">
+    <p class="hp-section-label">About Us</p>
+    <h2 class="hp-section-title">会社概要</h2>
+    <div class="hp-about">
+      <div class="hp-about-left">
+        <div class="hp-info-row">
+          <span class="hp-info-key">社名</span>
+          <span class="hp-info-val">株式会社 ÉLAN Groupe</span>
+        </div>
+        <div class="hp-info-row">
+          <span class="hp-info-key">代表取締役</span>
+          <span class="hp-info-val">那須 尋仁</span>
+        </div>
+        <div class="hp-info-row">
+          <span class="hp-info-key">従業員数</span>
+          <span class="hp-info-val">27名</span>
+        </div>
+        <div class="hp-info-row">
+          <span class="hp-info-key">主な業務</span>
+          <span class="hp-info-val">営業支援</span>
+        </div>
+        <div class="hp-info-row" style="border-bottom: none;">
+          <span class="hp-info-key">本社所在地</span>
+          <span class="hp-info-val" style="font-size:14px; color: rgba(240,237,230,0.45);">— 準備中 —</span>
+        </div>
+      </div>
+      <div class="hp-about-right">
+        <div class="hp-profile-card">
+          <div class="hp-avatar">那</div>
+          <div>
+            <div class="hp-profile-name">那須 尋仁</div>
+            <div class="hp-profile-role">代表取締役 CEO — 21歳</div>
+          </div>
+        </div>
+        <p style="font-size: 13px; font-weight: 300; line-height: 2; color: rgba(240,237,230,0.4); padding-left: 0.5rem;">
+          若きリーダーシップのもと、ÉLAN Groupe は営業支援のプロ集団として急成長中。訪問・催事を軸に、クライアントの売上拡大に貢献しています。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="hp-philosophy hp-section">
+    <div class="hp-phi-inner">
+      <p class="hp-section-label" style="text-align:center;">Philosophy</p>
+      <div class="hp-phi-quote">理念・ビジョン<br>（準備中）</div>
+      <p class="hp-phi-note">※ 近日更新予定</p>
+    </div>
+  </section>
+
+  <section class="hp-contact hp-section">
+    <div class="hp-contact-inner">
+      <div>
+        <p class="hp-section-label">Contact</p>
+        <h2 class="hp-contact-title">お気軽に<br>ご相談ください。</h2>
+        <p class="hp-contact-sub">営業支援に関するご相談・ご依頼は、こちらのフォームよりお気軽にお問い合わせください。担当者よりご連絡いたします。</p>
+        <div style="display: flex; align-items: center; gap: 10px; color: rgba(201,169,110,0.6); font-size: 12px; font-weight: 300; letter-spacing: 0.1em;">
+          <i class="ti ti-mail" style="font-size:16px;" aria-hidden="true"></i>
+          info@elan-groupe.jp（仮）
+        </div>
+      </div>
+      <div>
+        <div class="hp-form-group">
+          <input class="hp-input" type="text" placeholder="お名前 / Company Name" />
+        </div>
+        <div class="hp-form-group">
+          <input class="hp-input" type="email" placeholder="メールアドレス" />
+        </div>
+        <div class="hp-form-group">
+          <input class="hp-input" type="tel" placeholder="電話番号（任意）" />
+        </div>
+        <div class="hp-form-group">
+          <textarea class="hp-input hp-textarea" placeholder="お問い合わせ内容"></textarea>
+        </div>
+        <div class="hp-submit">
+          <button class="hp-btn" style="width: 100%; justify-content: center;">
+            送信する
+            <i class="ti ti-send" style="font-size:14px;" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="hp-footer">
+    <div class="hp-footer-logo">ÉLAN Groupe</div>
+    <div class="hp-footer-copy">© 2025 株式会社 ÉLAN Groupe. All rights reserved.</div>
+  </footer>
+</div>
