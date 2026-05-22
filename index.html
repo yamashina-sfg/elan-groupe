@@ -908,10 +908,32 @@ function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
 const observer = new IntersectionObserver(
-  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    } else {
+      e.target.classList.remove('visible');
+    }
+  }),
   { threshold: 0.08 }
 );
 document.querySelectorAll('.fade-up, .slide-left, .slide-right').forEach(el => observer.observe(el));
+
+// Hero: re-animate on scroll back to top
+const heroContent = document.querySelector('.hero-content');
+const heroObserver = new IntersectionObserver(
+  entries => entries.forEach(e => {
+    const els = ['.hero-badge','.hero-mission','.hero-jp','.hero-actions','.hero-stats'];
+    if (e.isIntersecting) {
+      els.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) { el.style.animation = 'none'; el.offsetHeight; el.style.animation = ''; }
+      });
+    }
+  }),
+  { threshold: 0.3 }
+);
+if (heroContent) heroObserver.observe(heroContent);
 </script>
 </body>
 </html>
